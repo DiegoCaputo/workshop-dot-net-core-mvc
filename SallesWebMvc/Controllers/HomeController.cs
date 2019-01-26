@@ -15,8 +15,19 @@ namespace SallesWebMvc.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
+            ViewData["Message"] = "Salles Web MVC App from C# Course";
+            ViewData["Professor"] = "Nelio Alves";
+
+            return View();
+        }
+
+        public IActionResult Privacy()  
+        {
+
+            ViewData["Message"] = "Privacy teste";
+
             return View();
         }
 
