@@ -29,7 +29,7 @@ namespace SallesWebMvc.Migrations
                     b.ToTable("Department");
                 });
 
-            modelBuilder.Entity("SallesWebMvc.Models.SallesRecord", b =>
+            modelBuilder.Entity("SallesWebMvc.Models.SalesRecord", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
@@ -46,7 +46,7 @@ namespace SallesWebMvc.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("SallesRecord");
+                    b.ToTable("SalesRecord");
                 });
 
             modelBuilder.Entity("SallesWebMvc.Models.Seller", b =>
@@ -71,7 +71,7 @@ namespace SallesWebMvc.Migrations
                     b.ToTable("Seller");
                 });
 
-            modelBuilder.Entity("SallesWebMvc.Models.SallesRecord", b =>
+            modelBuilder.Entity("SallesWebMvc.Models.SalesRecord", b =>
                 {
                     b.HasOne("SallesWebMvc.Models.Seller", "Seller")
                         .WithMany("Salles")

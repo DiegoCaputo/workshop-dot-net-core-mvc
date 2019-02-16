@@ -32,7 +32,7 @@ namespace SallesWebMvc.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SallesRecord",
+                name: "SalesRecord",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
@@ -44,9 +44,9 @@ namespace SallesWebMvc.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SallesRecord", x => x.id);
+                    table.PrimaryKey("PK_SalesRecord", x => x.id);
                     table.ForeignKey(
-                        name: "FK_SallesRecord_Seller_SellerId",
+                        name: "FK_SalesRecord_Seller_SellerId",
                         column: x => x.SellerId,
                         principalTable: "Seller",
                         principalColumn: "Id",
@@ -54,8 +54,8 @@ namespace SallesWebMvc.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_SallesRecord_SellerId",
-                table: "SallesRecord",
+                name: "IX_SalesRecord_SellerId",
+                table: "SalesRecord",
                 column: "SellerId");
 
             migrationBuilder.CreateIndex(
@@ -63,14 +63,15 @@ namespace SallesWebMvc.Migrations
                 table: "Seller",
                 column: "DepartmentId");
         }
-
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SallesRecord");
+                name: "SalesRecord");
 
             migrationBuilder.DropTable(
                 name: "Seller");
         }
     }
+
 }
+

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SallesWebMvc.Models;
+using SallesWebMvc.Data;
 
 namespace SallesWebMvc
 {
@@ -39,14 +35,18 @@ namespace SallesWebMvc
             services.AddDbContext<SallesWebMvcContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("SallesWebMvcContext"), 
                                     builder => builder.MigrationsAssembly("SallesWebMvc")));
+
+            services.AddScoped<SeeddingService>();   
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeeddingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {
