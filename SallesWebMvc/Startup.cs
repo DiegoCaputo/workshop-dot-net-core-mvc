@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SallesWebMvc.Models;
 using SallesWebMvc.Data;
+using SallesWebMvc.Services;
 
 namespace SallesWebMvc
 {
@@ -36,7 +37,8 @@ namespace SallesWebMvc
                     options.UseMySql(Configuration.GetConnectionString("SallesWebMvcContext"), 
                                     builder => builder.MigrationsAssembly("SallesWebMvc")));
 
-            services.AddScoped<SeeddingService>();   
+            services.AddScoped<SeeddingService>();
+            services.AddScoped<SellerService>();
 
         }
 
